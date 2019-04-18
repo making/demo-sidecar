@@ -14,3 +14,23 @@ cf start demo-sidecar
 $ curl https://demo-sidecar.yourcf.example.com -w '\n'
 Sidecar received your data
 ```
+
+```
+$ curl https://demo-sidecar.yourcf.example.com/kill-sidecar -w '\n'
+```
+
+```
+   2019-04-18T16:29:33.85+0900 [APP/PROC/WEB/SIDECAR/DEMO/0] OUT Exit status 137
+   2019-04-18T16:29:33.85+0900 [CELL/SSHD/0] OUT Exit status 0
+   2019-04-18T16:29:33.87+0900 [APP/PROC/WEB/0] OUT Exit status 143
+```
+
+```
+$ curl https://demo-sidecar.yourcf.example.com/kill-main -w '\n'
+```
+
+```
+   2019-04-18T16:32:22.04+0900 [APP/PROC/WEB/0] OUT Exit status 137
+   2019-04-18T16:32:22.05+0900 [CELL/SSHD/0] OUT Exit status 0
+   2019-04-18T16:32:22.06+0900 [APP/PROC/WEB/SIDECAR/DEMO/0] OUT Exit status 143
+```

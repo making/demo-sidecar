@@ -7,10 +7,13 @@ import (
 	"os"
 	"io"
 	"net"
+	"os/exec"
 )
 
 func main() {
 	http.HandleFunc("/", respond)
+	http.HandleFunc("/kill-sidecar", killSidecar)
+	http.HandleFunc("/kill-main", killMain)
 	fmt.Println("listening...")
 	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 	if err != nil {
@@ -28,6 +31,13 @@ func reader(r io.Reader) []byte {
 	return buf[0:n]
 }
 
+func killSidecar(res http.ResponseWriter, req *http.Request) {
+	exec.Command("pkill", "-KILL", "sidecar").Start()
+}
+
+func killMain(res http.ResponseWriter, req *http.Request) {
+	exec.Command("pkill", "-KILL", "main").Start()
+}
 
 func respond(res http.ResponseWriter, req *http.Request) {
 	c, err := net.Dial("unix", "/tmp/sidecar.sock")
