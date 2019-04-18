@@ -34,3 +34,8 @@ $ curl https://demo-sidecar.yourcf.example.com/kill-main
    2019-04-18T16:32:22.05+0900 [CELL/SSHD/0] OUT Exit status 0
    2019-04-18T16:32:22.06+0900 [APP/PROC/WEB/SIDECAR/DEMO/0] OUT Exit status 143
 ```
+
+
+This sample app is a clone of 
+* https://github.com/cloudfoundry/capi-bara-tests/tree/master/assets/sidecar
+* https://github.com/cloudfoundry/capi-bara-tests/tree/master/assets/sidecar-dependent
