@@ -6,3 +6,8 @@ applications:
   env:
     GOPACKAGENAME: github.com/making/cf-sidecar
     GO_INSTALL_PACKAGE_SPEC: github.com/making/cf-sidecar/cmd/main
+  sidecars:
+   - name: sidecar
+     process_types:
+     - web
+     command: ./sidecar

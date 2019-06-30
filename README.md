@@ -5,9 +5,10 @@ Make sure `cf curl /v2/info | jq -r .api_version` is 2.134.0+.
 
 ```
 GOOS=linux go build ./cmd/sidecar/
-cf push --no-start
-cf curl /v3/apps/$(cf app demo-sidecar --guid)/sidecars -d '{"name":"demo","command":"./sidecar","process_types": ["web"]}'
-cf start demo-sidecar
+
+cf v3-create-app demo-sidecar
+cf v3-apply-manifest -f manifest.yml
+cf v3-push demo-sidecar
 ```
 
 ```
